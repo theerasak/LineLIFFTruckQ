@@ -319,13 +319,13 @@
     }
     $("#step2").hide();
     $("#step3").hide();
-    // liff.init({ liffId: "2000487303-op9O67xV" }, () => {
-    //   if (liff.isLoggedIn()) {
-    //     runApp()
-    //   } else {
-    //     liff.login();
-    //   }
-    // }, err => console.error(err.code, error.message));
+    liff.init({ liffId: "2000487303-op9O67xV" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
   </script>
 </body>
 </html>
