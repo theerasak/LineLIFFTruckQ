@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app V1.1</title>
+  <title>My LIFF app 1.4</title>
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
@@ -28,26 +28,29 @@
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p> -->
+  <style>
+    #pictureUrl { display: block; margin: 0 auto }
+  </style>
+  <img id="pictureUrl" width="25%">
   <p id="userId"></p>
   <p id="displayName"></p>
   <p id="statusMessage"></p>
   <p id="getDecodedIDToken"></p>
+
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
-  <style>
-    #pictureUrl { display: block; margin: 0 auto }
-  </style>
+
   <!-- <script src="js/vconsole.min.js"></script> -->
   <!-- <script>
     var vConsole = new VConsole()
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+  <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>  -->
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     function createUniversalLink() {
@@ -84,19 +87,18 @@
         document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
         document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
         document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
-
-        alert(JSON.stringify(profile));
       }).catch(err => console.error(err));
+      alert(JSON.stringify(profile));
     }
 
     function getEnvironment() {
     }
 
     async function main() {
-       
+     
       await liff.init({ liffId: "2000487303-op9O67xV" })
       // getEnvironment()
-         getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
