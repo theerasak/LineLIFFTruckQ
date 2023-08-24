@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
-  <p id="os"><b>OS:</b> </p>
+  <!-- <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
@@ -27,15 +27,20 @@
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
-
+  <p><a href="liff/path/?param=9">Link to Path</a></p> -->
+  <p id="userId"></p>
+  <p id="displayName"></p>
+  <p id="statusMessage"></p>
+  <p id="getDecodedIDToken"></p>
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
-
+  <style>
+    #pictureUrl { display: block; margin: 0 auto }
+  </style>
   <!-- <script src="js/vconsole.min.js"></script> -->
   <!-- <script>
     var vConsole = new VConsole()
@@ -43,6 +48,7 @@
   </script> -->
 
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -72,6 +78,13 @@
     }
 
     async function getUserProfile() {
+      liff.getProfile().then(profile => {
+        document.getElementById("pictureUrl").src = profile.pictureUrl;
+        document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
+        document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+        document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
+        document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
+      }).catch(err => console.error(err));
     }
 
     function getEnvironment() {
@@ -81,7 +94,7 @@
       alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "YOUR-LIFF-ID" })
       // getEnvironment()
-      // getUserProfile()
+         getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
