@@ -39,7 +39,7 @@
 
 <div id="step1" class="container">
    <div class="row">
-    <div class="col-sm-12"><img id="pictureUrl" width="25%"></div>
+    <div class="col-sm-12"><img id="pictureUrl" width="35%"></div>
   </div> 
   <div class="row">
     <div class="col-sm-12"><p id="userId"></p></div>
@@ -51,7 +51,7 @@
   <div class="row">
     <div class="col-sm-12">
       <label>กิจกรรม</label>
-      <select id="ddl1" class="form-control">
+      <select id="ddlToPic" class="form-control">
       <option selected="" value="--">--</option>
       <option value="รับตู้(หนัก)">รับตู้(หนัก)</option>
       <option value="ส่งตู้(หนัก)">ส่งตู้(หนัก)</option>
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-sm-12">
       <label>ท่าเรือ</label>
-      <select id="ddl2" class="form-control">
+      <select id="ddlTerminal" class="form-control">
         <option selected="" value="--">--</option>
         <option value="A0">A0</option>
         <option value="B1">B1</option>
@@ -72,7 +72,7 @@
   </div> 
   <div class="row">
     <div class="col-sm-12">
-      <label>ท่าเรือ</label>
+      <label>ทะเบียนรถ</label>
       <input type="text" id="txtLicense" class="form-control"/>
     </div>
   </div> 
@@ -97,62 +97,23 @@
 </div>
 <div id="step2" class="container">
   <div class="row">
-    <div class="col-sm-12">
-
-กิจกรรม
-
-ถัดไป
-
-00:00 - 00:59 (คงเหลือ 30 คิว)
-
-01:00 - 01:59 (คงเหลือ 30 คิว)
-
-02:00 - 02:59 (คงเหลือ 30 คิว)
-
-03:00 - 00:59 (คงเหลือ 30 คิว)
-
-04:00 - 04:59 (คงเหลือ 30 คิว)
-
-05:00 - 05:59 (คงเหลือ 30 คิว)
-
-06:00 - 06:59 (คงเหลือ 30 คิว)
-
-07:00 - 07:59 (คงเหลือ 30 คิว)
-
-08:00 - 08:59 (คงเหลือ 30 คิว)
-
-09:00 - 09:59 (คงเหลือ 0 คิว)
-
-10:00 - 10:59 (คงเหลือ 30 คิว)
-
-11:00 - 11:59 (คงเหลือ 30 คิว)
-
-12:00 - 12:59 (คงเหลือ 30 คิว)
-
-13:00 - 13:59 (คงเหลือ 30 คิว)
-
-14:00 - 14:59 (คงเหลือ 30 คิว)
-
-15:00 - 15:59 (คงเหลือ 0 คิว)
-
-16:00 - 16:59 (คงเหลือ 30 คิว)
-
-17:00 - 17:59 (คงเหลือ 30 คิว)
-
-18:00 - 18:59 (คงเหลือ 30 คิว)
-
-19:00 - 19:59 (คงเหลือ 30 คิว)
-</div> 
+      <div class="col-12">
+        <div id="checkboxes">
+           
+        </div>
+        
+      </div>
+  </div> 
  <div class="row">
-  <div class="col-6">
-    
-    <button id="btnMsg" onclick="step2()" class="form-control">ถัดไป</button>
-  </div>
-  <div class="col-6">
-    
-    <button id="btnMsg" onclick="step1()" class="form-control">กลับ</button>
-  </div>
-</div> 
+    <div class="col-6">
+      
+      <button id="btnMsg" onclick="step2()" class="form-control">ถัดไป</button>
+    </div>
+    <div class="col-6">
+      
+      <button id="btnMsg" onclick="step1()" class="form-control">กลับ</button>
+    </div>
+  </div> 
  </div> 
  <br/>
 
@@ -229,12 +190,38 @@
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     function step1() {
+         
+        var ddlToPic=$("#ddlToPic").val();
+        var ddlTerminal=$("#ddlTerminal").val();
+        var txtLicense=$("#txtLicense").val();
+        var txtDate=$("#txtDate").val();
+        var txtTelNo=$("#txtTelNo").val();
+        alert(ddlToPic+","+ddlTerminal+","+txtLicense+","+txtDate+","+txtTelNo);
         $("#step1").hide();
         $("#step2").show();
+        $select = $('#checkboxes');
+        $.ajax({
+            type: "GET",
+            url: 'https://dummyjson.com/products',
+            dataType: 'JSON',
+            success:function(data) {
+              JSON.stringify(data);
+                $select.html('<option value="">Select brand</option>');
+                $.each(data, function(key, val) {
+                    $select.append('<option value="' + val.id + '">' + val.title + '</option>');
+                })
+            },
+            error: function(){
+                $select.html('<option value="-2">Please try again...</option>');
+            }
+        });
     }
     function step2() {
       $("#step2").hide();
       $("#step3").show();
+
+      
+      
     }
     function step3() {
       $("#step2").hide();
