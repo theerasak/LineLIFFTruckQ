@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>My LIFF app 1.4</title>
   <link rel="stylesheet" href="css/style.css" media="all">
+  
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
   <!-- <p id="os"><b>OS:</b> </p>
@@ -31,18 +36,188 @@
   <style>
     #pictureUrl { display: block; margin: 0 auto }
   </style>
-  <img id="pictureUrl" width="25%">
-  <p id="userId"></p>
-  <p id="displayName"></p>
-  <p id="statusMessage"></p>
-  <p id="getDecodedIDToken"></p>
+
+<div id="step1" class="container">
+   <div class="row">
+    <div class="col-sm-12"><img id="pictureUrl" width="25%"></div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12"><p id="userId"></p></div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12"><p id="displayName"></p></div>
+  </div> 
+  <h2 class="form-control" style="background-color: blueviolet;color: #fff;">ข้อมูลการของคิว</h1>
+  <div class="row">
+    <div class="col-sm-12">
+      <label>กิจกรรม</label>
+      <select id="ddl1" class="form-control">
+      <option selected="" value="--">--</option>
+      <option value="รับตู้(หนัก)">รับตู้(หนัก)</option>
+      <option value="ส่งตู้(หนัก)">ส่งตู้(หนัก)</option>
+      <option value="รับตู้(เปล่า)">รับตู้(เปล่า)</option>
+      <option value="ส่งตู้(เปล่า)">ส่งตู้(เปล่า)</option>
+    </select>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <label>ท่าเรือ</label>
+      <select id="ddl2" class="form-control">
+        <option selected="" value="--">--</option>
+        <option value="A0">A0</option>
+        <option value="B1">B1</option>
+    </select>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <label>ท่าเรือ</label>
+      <input type="text" id="txtLicense" class="form-control"/>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <label>วันที่จอง</label>
+      <input type="text" id="txtDate" class="form-control"/>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <label>เบอร์ติดต่อ</label>
+      <input type="text" id="txtTelNo" class="form-control"/>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <br/>
+      <button id="btnMsg" onclick="step1()" class="form-control">ถัดไป</button>
+    </div>
+  </div> 
+</div>
+<div id="step2" class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+กิจกรรม
+
+ถัดไป
+
+00:00 - 00:59 (คงเหลือ 30 คิว)
+
+01:00 - 01:59 (คงเหลือ 30 คิว)
+
+02:00 - 02:59 (คงเหลือ 30 คิว)
+
+03:00 - 00:59 (คงเหลือ 30 คิว)
+
+04:00 - 04:59 (คงเหลือ 30 คิว)
+
+05:00 - 05:59 (คงเหลือ 30 คิว)
+
+06:00 - 06:59 (คงเหลือ 30 คิว)
+
+07:00 - 07:59 (คงเหลือ 30 คิว)
+
+08:00 - 08:59 (คงเหลือ 30 คิว)
+
+09:00 - 09:59 (คงเหลือ 0 คิว)
+
+10:00 - 10:59 (คงเหลือ 30 คิว)
+
+11:00 - 11:59 (คงเหลือ 30 คิว)
+
+12:00 - 12:59 (คงเหลือ 30 คิว)
+
+13:00 - 13:59 (คงเหลือ 30 คิว)
+
+14:00 - 14:59 (คงเหลือ 30 คิว)
+
+15:00 - 15:59 (คงเหลือ 0 คิว)
+
+16:00 - 16:59 (คงเหลือ 30 คิว)
+
+17:00 - 17:59 (คงเหลือ 30 คิว)
+
+18:00 - 18:59 (คงเหลือ 30 คิว)
+
+19:00 - 19:59 (คงเหลือ 30 คิว)
+</div> 
+ <div class="row">
+  <div class="col-6">
+    
+    <button id="btnMsg" onclick="step2()" class="form-control">ถัดไป</button>
+  </div>
+  <div class="col-6">
+    
+    <button id="btnMsg" onclick="step1()" class="form-control">กลับ</button>
+  </div>
+</div> 
+ </div> 
+ <br/>
+
+</div>
+<div id="step3" class="container">
+  <h3>สรุปการจองคิว</h3>
+  
+  <div class="row">
+      <div class="col-sm-12">
+        <label>กิจกรรม</label>
+        <input type="text" id="lblTopic" class="form-control"/>
+      </div>    
+ </div> 
+ <div class="row">
+  <div class="col-sm-12">
+    <label>ท่าเรือ</label>
+    <input type="text" id="lblTerminal" class="form-control"/>
+  </div>    
+</div> 
+<div class="row">
+  <div class="col-sm-12">
+    <label>ทะเบียนรถ</label>
+    <input type="text" id="lblLicense" class="form-control"/>
+  </div>    
+</div> 
+<div class="row">
+  <div class="col-sm-12">
+    <label>วันที่</label>
+    <input type="text" id="lblDate" class="form-control"/>
+  </div>    
+</div> 
+<div class="row">
+  <div class="col-sm-12">
+    <label>เวลา</label>
+    <input type="text" id="lblTime" class="form-control"/>
+  </div>    
+</div> 
+<div class="row">
+  <div class="col-sm-12">
+    <label>เบอร์ติดต่อ</label>
+    <input type="text" id="lblTel" class="form-control"/>
+  </div>    
+</div> 
+<br/>
+<div class="row">
+  <div class="col-6">
+    
+    <button id="btnMsg" onclick="step2()" class="form-control">ยืนยัน</button>
+  </div>
+  <div class="col-6">
+    
+    <button id="btnMsg" onclick="step1()" class="form-control">กลับไป</button>
+  </div>
+</div> 
+</div>
+  
+  <!-- <p id="statusMessage" class="hide"></p>
+  <p id="getDecodedIDToken" class="hide"></p>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
+  <button id="btnClose" onclick="closed()">Close</button> -->
 
   <!-- <script src="js/vconsole.min.js"></script> -->
   <!-- <script>
@@ -53,6 +228,18 @@
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>  -->
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
+    function step1() {
+        $("#step1").hide();
+        $("#step2").show();
+    }
+    function step2() {
+      $("#step2").hide();
+      $("#step3").show();
+    }
+    function step3() {
+      $("#step2").hide();
+      $("#step3").show();
+    }
     function createUniversalLink() {
     }
 
@@ -88,7 +275,7 @@
         document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
         document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
       }).catch(err => console.error(err));
-      alert(JSON.stringify(profile));
+      console.log(JSON.stringify(profile));
     }
 
     function getEnvironment() {
@@ -113,13 +300,15 @@
         document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
       }).catch(err => console.error(err));
     }
-    liff.init({ liffId: "2000487303-op9O67xV" }, () => {
-      if (liff.isLoggedIn()) {
-        runApp()
-      } else {
-        liff.login();
-      }
-    }, err => console.error(err.code, error.message));
+    $("#step2").hide();
+    $("#step3").hide();
+    // liff.init({ liffId: "2000487303-op9O67xV" }, () => {
+    //   if (liff.isLoggedIn()) {
+    //     runApp()
+    //   } else {
+    //     liff.login();
+    //   }
+    // }, err => console.error(err.code, error.message));
   </script>
 </body>
 </html>
