@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app V1</title>
+  <title>My LIFF app V1.1</title>
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
@@ -85,7 +85,7 @@
         document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
         document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
 
-        console.log(JSON.stringify(profile));
+        alert(JSON.stringify(profile));
       }).catch(err => console.error(err));
     }
 
