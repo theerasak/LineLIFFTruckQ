@@ -7,9 +7,18 @@
   <link rel="stylesheet" href="css/style.css" media="all">
   
  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <link href="css/jquery.mobile-1.4.4.min.css" rel="stylesheet" />
+  <link href="css/jqm-datebox-1.4.4.min.css" rel="stylesheet" />
+<!-- NOTE: Script load order is significant! -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+<script src="js/jqm-datebox-1.4.4.core.min.js"></script>
+<script src="js/jqm-datebox-1.4.4.mode.flipbox.min.js"></script>
 </head>
 <body>
   <!-- <p id="os"><b>OS:</b> </p>
@@ -33,13 +42,6 @@
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p> -->
-  <style>
-    #pictureUrl { display: block; margin: 0 auto }
-    li { /* styles all li elements*/
-    list-style-type: none;
-    }
-  </style>
-
 <div id="step1" class="container">
    <div class="row">
     <div class="col-sm-12"><img id="pictureUrl" width="35%"></div>
@@ -50,7 +52,7 @@
   <div class="row">
     <div class="col-sm-12"><p id="displayName"></p></div>
   </div> 
-  <h2 class="form-control" style="background-color: blueviolet;color: #fff;">ข้อมูลการของคิว</h1>
+  <h3 class="form-control" style="background-color: blueviolet;color: #fff;">ข้อมูลการของคิว</h3>
   <div class="row">
     <div class="col-sm-12">
       <label>กิจกรรม</label>
@@ -82,7 +84,7 @@
   <div class="row">
     <div class="col-sm-12">
       <label>วันที่จอง</label>
-      <input type="text" id="txtDate" class="form-control"/>
+      <input type="date" id="txtDate" data-role="datebox" data-options='{&quot;mode&quot;:&quot;flipbox&quot;}' data-date-format="dd/mm/yyyy" />
     </div>
   </div> 
   <div class="row">
@@ -102,6 +104,7 @@
   <div class="col-sm-12">
   <div class="row">
       <div class="col-12">
+        <h3 class="form-control" style="background-color: blueviolet;color: #fff;">ระบุ</h3>
         <div id="checkboxes">
            
         </div>
@@ -126,7 +129,7 @@
 
 </div>
 <div id="step3" class="container">
-  <h2 class="form-control" style="background-color: blueviolet;color: #fff;">สรุปการจองคิว</h2>
+  <h3 class="form-control" style="background-color: blueviolet;color: #fff;">สรุปการจองคิว</h3>
   <div class="row">
       <div class="col-sm-12">
         <label>กิจกรรม</label>
@@ -180,6 +183,12 @@
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>  -->
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
+    $(document).ready(function () {
+
+        $("#txtDate").click(function (event) {
+            $(".ui-icon-calendar").trigger("click");
+        });
+        });
         var ddlToPic='';
         var ddlTerminal='';
         var txtLicense='';
@@ -205,11 +214,11 @@
             dataType: 'JSON',
             success:function(data) {
               JSON.stringify(data);
-                $select.html('<h2 class="form-control" style="background-color: blueviolet;color: #fff;">ระบุ</h2>');
+                $select.html('<ul>');
                 $.each(data.products, function(key, val) {
                     $select.append('<li><input type="radio" name="BookList" value='+val.id+'> <label> ' + val.title + '</label> </li>');
                 });
-                $select.append('</li>');
+                $select.append('</ul>');
             },
             error: function(){
                     $select.html('Please try again');

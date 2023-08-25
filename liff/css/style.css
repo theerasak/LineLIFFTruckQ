@@ -30,4 +30,46 @@ p {
 #accessToken, #utouId {
   display: block;
   overflow: auto
+}#pictureUrl { display: block; margin: 0 auto }
+    li { /* styles all li elements*/
+    list-style-type: none;
+    }
+    .ui-datebox-flipcenter {
+        width: 160px;
+    }
+
+    table tr td {
+        padding: 5px;
+    }
+
+    .control-label {
+        font-size: 20px !important;
+    }
+    #btnSave, #btnSave:visited, .ui-btn {
+        /*background-color: #3c8dbc !important;
+        border-color: #367fa9 !important;
+        color: #ffffff !important;
+        opacity: 1 !important;*/
+    }
+
+    .ui-datebox-container {
+        zoom: 150%;
+    }
+    .container{
+      padding: 10px;
+    }
+    h2,h4,h3{padding: 5px}
+    .btn-primary {
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}.btn-danger {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}.ui-datebox-flipcenter {
+     width: 100%;/
+}
+button:hover{
+  transform: scale(1.02);
 }
