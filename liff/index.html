@@ -133,37 +133,37 @@
   <div class="row">
       <div class="col-sm-12">
         <label>กิจกรรม</label>
-        <p type="text" id="lblTopic" class="form-control"></p>
+        <input type="text" id="lblTopic" class="form-control" readonly/>
       </div>    
  </div> 
  <div class="row">
   <div class="col-sm-12">
     <label>ท่าเรือ</label>
-    <p type="text" id="lblTerminal" class="form-control"></p>
+    <input type="text" id="lblTerminal" class="form-control" readonly/>
   </div>    
 </div> 
 <div class="row">
   <div class="col-sm-12">
     <label>ทะเบียนรถ</label>
-    <p type="text" id="lblLicense" class="form-control"></p>
+    <input type="text" id="lblLicense" class="form-control" readonly/>
   </div>    
 </div> 
 <div class="row">
   <div class="col-sm-12">
     <label>วันที่</label>
-    <p type="text" id="lblDate" class="form-control"></p>
+    <input type="text" id="lblDate" class="form-control" readonly/>
   </div>    
 </div> 
 <div class="row">
   <div class="col-sm-12">
     <label>เวลา</label>
-    <p type="text" id="lblTime" class="form-control"></p>
+    <input type="text" id="lblTime" class="form-control" readonly/>
   </div>    
 </div> 
 <div class="row">
   <div class="col-sm-12">
     <label>เบอร์ติดต่อ</label>
-    <p type="text" id="lblTel" class="form-control"></p>
+    <input type="text" id="lblTel" class="form-control" readonly/>
   </div>    
 </div> 
 <br/>
@@ -184,7 +184,10 @@
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     $(document).ready(function () {
-
+jQuery.extend(jQuery.mobile.datebox.prototype.options, {
+    'dateFormat': 'dd/MM/YYYY',
+    'headerFormat': 'dd/MM/YYYY',
+});
         $("#txtDate").click(function (event) {
             $(".ui-icon-calendar").trigger("click");
         });
@@ -249,12 +252,19 @@
         var txtTelNo=$("#txtTelNo").val();
       console.log('result'+ddlToPic+","+ddlTerminal+","+txtLicense+","+txtDate+","+txtTelNo);
       
-        document.getElementById("lblTopic").innerHTML = ddlToPic;
-        document.getElementById("lblTerminal").innerHTML =ddlTerminal;
-        document.getElementById("lblLicense").innerHTML = txtLicense;
-        document.getElementById("lblDate").innerHTML = txtDate;
-        document.getElementById("lblTime").innerHTML = txtDate;
-        document.getElementById("lblTel").innerHTML = txtTelNo;
+        // document.getElementById("lblTopic").innerHTML = ddlToPic;
+        // document.getElementById("lblTerminal").innerHTML =ddlTerminal;
+        // document.getElementById("lblLicense").innerHTML = txtLicense;
+        // document.getElementById("lblDate").innerHTML = txtDate;
+        // document.getElementById("lblTime").innerHTML = txtDate;
+        // document.getElementById("lblTel").innerHTML = txtTelNo;
+
+        $("#lblTopic").val(ddlToPic) ;
+        $("#lblTerminal").val(ddlTerminal);
+        $("#lblLicense").val(txtLicense);
+        $("#lblDate").val(txtDate);
+        $("#lblTime").val(txtDate);
+        $("#lblTel").val(txtTelNo);
 
     }
     function step3() {
@@ -331,13 +341,13 @@
     }
     $("#step2").hide();
     $("#step3").hide();
-  //   liff.init({ liffId: "2000487303-op9O67xV" }, () => {
-  //     if (liff.isLoggedIn()) {
-  //       runApp()
-  //     } else {
-  //       liff.login();
-  //     }
-  //   }, err => console.error(err.code, error.message));
+    liff.init({ liffId: "2000487303-op9O67xV" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
   // </script>
 </body>
 </html>
