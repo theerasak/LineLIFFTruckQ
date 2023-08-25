@@ -88,34 +88,38 @@
   <div class="row">
     <div class="col-sm-12">
       <label>เบอร์ติดต่อ</label>
-      <input type="text" id="txtTelNo" class="form-control"/>
+      <input type="text" id="txtTelNo" class="form-control" maxlength="10"/>
     </div>
   </div> 
   <div class="row">
     <div class="col-sm-12">
       <br/>
-      <button id="btnMsg" onclick="step1()" class="form-control">ถัดไป</button>
+      <button id="btnMsg" onclick="step1()" class="btn btn-primary">ถัดไป</button>
     </div>
   </div> 
 </div>
 <div id="step2" class="container">
+  <div class="col-sm-12">
   <div class="row">
       <div class="col-12">
         <div id="checkboxes">
            
         </div>
-        
+        </div>
       </div>
   </div> 
+  <br/>
  <div class="row">
-    <div class="col-6">
-      
-      <button id="btnMsg" onclick="step2()" class="form-control">ถัดไป</button>
+    <div class="col-12">
+      <div class="col-sm-12">
+      <button id="btnMsg" onclick="step2()" class="btn btn-primary">ถัดไป</button></div>
     </div>
-    <div class="col-6">
-      
-      <button id="btnMsg" onclick="backStep1()" class="form-control">กลับ</button>
     </div>
+    <div class="row">
+    <div class="col-12">
+      <div class="col-sm-12">
+      <button id="btnMsg" onclick="backStep1()" class="btn btn-danger">กลับ</button></div>
+    </div></div>
   </div> 
  </div> 
  <br/>
@@ -123,7 +127,6 @@
 </div>
 <div id="step3" class="container">
   <h2 class="form-control" style="background-color: blueviolet;color: #fff;">สรุปการจองคิว</h2>
-  
   <div class="row">
       <div class="col-sm-12">
         <label>กิจกรรม</label>
@@ -162,13 +165,13 @@
 </div> 
 <br/>
 <div class="row">
-  <div class="col-6">
-    
-    <button id="btnMsg" onclick="step3()" class="form-control">ยืนยัน</button>
-  </div>
-  <div class="col-6">
-    
-    <button id="btnMsg" onclick="backStep2()" class="form-control">กลับไป</button>
+  <div class="col-sm-12">
+    <button id="btnMsg" onclick="step3()" class="btn btn-primary">ยืนยัน</button>
+  </div></div>
+  <div class="row">
+  <div class="col-sm-12">
+     
+    <button id="btnMsg" onclick="backStep2()" class="btn btn-danger">กลับไป</button>
   </div>
 </div> 
 </div>
@@ -319,13 +322,13 @@
     }
     $("#step2").hide();
     $("#step3").hide();
-    liff.init({ liffId: "2000487303-op9O67xV" }, () => {
-      if (liff.isLoggedIn()) {
-        runApp()
-      } else {
-        liff.login();
-      }
-    }, err => console.error(err.code, error.message));
-  </script>
+  //   liff.init({ liffId: "2000487303-op9O67xV" }, () => {
+  //     if (liff.isLoggedIn()) {
+  //       runApp()
+  //     } else {
+  //       liff.login();
+  //     }
+  //   }, err => console.error(err.code, error.message));
+  // </script>
 </body>
 </html>
