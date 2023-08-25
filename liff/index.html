@@ -353,13 +353,13 @@
     async function sendMsg() {
       // ต.ย ข้อความแบบ text จำนวน 2 bubbles
       if(liff.getContext().type!=="none"){
-await liff.sendMessage([
-  {
-    "type": "text",
-    "text": "Hello World!"
-  }
-])
-
+          await liff.sendMessage([
+            {
+              "type": "text",
+              "text": "Hello World!"
+            }
+          ])
+      alert('sent');
         
       }
   
