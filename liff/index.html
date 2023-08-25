@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app 1.4</title>
+  <title>LCB1 Truck Q</title>
   <link rel="stylesheet" href="css/style.css" media="all">
   <link rel="stylesheet" type="text/css" href="css/notie.css">
  
@@ -45,9 +45,9 @@
   <p><a href="liff/path/?param=9">Link to Path</a></p> -->
 <div id="step1" class="container">
    <div class="row">
-    <div class="col-sm-12"><img id="pictureUrl" width="35%"></div>
+    <div class="col-sm-12"><img id="pictureUrl" style="height: 100px;"></div>
   </div> 
-  <div class="row">
+  <div class="row" style="display: none;">
     <div class="col-sm-12"><p id="userId"></p></div>
   </div> 
   <div class="row">
@@ -404,13 +404,13 @@
     }
     $("#step2").hide();
     $("#step3").hide();
-    liff.init({ liffId: "2000487303-op9O67xV" }, () => {
-      if (liff.isLoggedIn()) {
-        runApp()
-      } else {
-        liff.login();
-      }
-    }, err => console.error(err.code, error.message));
+    // liff.init({ liffId: "2000487303-op9O67xV" }, () => {
+    //   if (liff.isLoggedIn()) {
+    //     runApp()
+    //   } else {
+    //     liff.login();
+    //   }
+    // }, err => console.error(err.code, error.message));
   </script>
 </body>
 </html>
