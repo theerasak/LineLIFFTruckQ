@@ -73,3 +73,10 @@ p {
 button:hover{
   transform: scale(1.02);
 }
+.header {
+  /* border: 1px solid #c0c0c0; */
+  padding: 25px;
+  background: url(../images/HomeImg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
