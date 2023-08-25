@@ -380,14 +380,8 @@ function confirm () {
               },
           ])
               .then(() => {
-                  window.alert('Message sent');
-              })
-              .catch((error) => {
-                  window.alert('Error sending message: ' + error);
-              });
-      }
-      // closeWindow call
-      if (!liff.isInClient()) {
+                // closeWindow call
+                   if (!liff.isInClient()) {
           window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
       } else {
         notie.alert({ type: 1, text: 'บันทีกสำเร็จ! :D', time: 2 });
@@ -396,6 +390,13 @@ function confirm () {
 }, 1000);
           
       }
+              })
+              .catch((error) => {
+                  window.alert('Error sending message: ' + error);
+              });
+      }
+      
+      
  
     }
 
