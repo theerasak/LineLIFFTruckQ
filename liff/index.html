@@ -44,9 +44,11 @@
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p> -->
 <div id="step1" class="container">
+  <heading>
+  <div class="heading"><table><tbody><tr><td id="line1"></td><td id="line2">Welcome to LCB1 and  LCMT</td><td id="line3"></td></tr></tbody></table><div class="heading-line"></div></div>
    <div class="row header">
     <div class="col-sm-12"><img id="pictureUrl" style="height: 100px;width: 100px;"></div>
-  </div> 
+  </div></heading> 
   <div class="row" style="display: none;">
     <div class="col-sm-12"><p id="userId"></p></div>
   </div> 
@@ -383,21 +385,12 @@
     function getEnvironment() {
     }
 
-    async function main() {
      
-      await liff.init({ liffId: "2000487303-op9O67xV" })
-      // getEnvironment()
-      getUserProfile()
-      // getContext()
-      // getFriendship()
-      // createUniversalLink()
-    }
-    //main()
     function runApp() {
       liff.getProfile().then(profile => {
         document.getElementById("pictureUrl").src = profile.pictureUrl;
         document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
-        document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
+        document.getElementById("displayName").innerHTML = '<b>สวัสดี:</b> ' + profile.displayName;
         document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
         document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
       }).catch(err => console.error(err));

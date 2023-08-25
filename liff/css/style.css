@@ -80,3 +80,36 @@ button:hover{
   background-repeat: no-repeat;
   background-size: cover;
 }
+heading>.heading>table td#line1 {
+    /* width: 25px; */
+    background-image: url(../images/TitleBG1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+heading>.heading>table td#line2 {
+    background-image: url(../images/TitleBG2.png);
+    background-repeat: repeat-x;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+heading>.heading>table td#line3 {
+    width: 117px;
+    background-image: url(../images/TitleBG3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+heading {
+    /* margin: 15px 0 15px; */
+}
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 0px;
+    border-color: gray;
+    width: 100%;
+}
