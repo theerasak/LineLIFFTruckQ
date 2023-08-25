@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>My LIFF app 1.4</title>
   <link rel="stylesheet" href="css/style.css" media="all">
-  
+  <link rel="stylesheet" type="text/css" href="css/notie.css">
  
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -19,6 +19,7 @@
 <script src="js/jquery.mobile-1.4.4.min.js"></script>
 <script src="js/jqm-datebox-1.4.4.core.min.js"></script>
 <script src="js/jqm-datebox-1.4.4.mode.flipbox.min.js"></script>
+<script src="js/notie.js"></script>
 </head>
 <body>
   <!-- <p id="os"><b>OS:</b> </p>
@@ -58,10 +59,10 @@
       <label>กิจกรรม</label>
       <select id="ddlToPic" class="form-control">
       <option selected="" value="--">--</option>
-      <option value="รับตู้(หนัก)">รับตู้(หนัก)</option>
+       
       <option value="ส่งตู้(หนัก)">ส่งตู้(หนัก)</option>
       <option value="รับตู้(เปล่า)">รับตู้(เปล่า)</option>
-      <option value="ส่งตู้(เปล่า)">ส่งตู้(เปล่า)</option>
+       
     </select>
     </div>
   </div> 
@@ -75,28 +76,19 @@
     </select>
     </div>
   </div> 
-  <div class="row">
-    <div class="col-sm-12">
-      <label>ทะเบียนรถ</label>
-      <input type="text" id="txtLicense" class="form-control"/>
-    </div>
-  </div> 
+  
   <div class="row">
     <div class="col-sm-12">
       <label>วันที่จอง</label>
       <input type="date" id="txtDate" data-role="datebox" data-options='{&quot;mode&quot;:&quot;flipbox&quot;}' data-date-format="dd/mm/yyyy" />
     </div>
   </div> 
-  <div class="row">
-    <div class="col-sm-12">
-      <label>เบอร์ติดต่อ</label>
-      <input type="text" id="txtTelNo" class="form-control" maxlength="10"/>
-    </div>
-  </div> 
+   
   <div class="row">
     <div class="col-sm-12">
       <br/>
       <button id="btnMsg" onclick="step1()" class="btn btn-primary">ถัดไป</button>
+       <button id="btnMsg3" onclick="sendMsg()" class="btn btn-primary">test</button>
     </div>
   </div> 
 </div>
@@ -131,23 +123,17 @@
 <div id="step3" class="container">
   <h3 class="form-control" style="background-color: blueviolet;color: #fff;">สรุปการจองคิว</h3>
   <div class="row">
-      <div class="col-sm-12">
-        <label>กิจกรรม</label>
-        <input type="text" id="lblTopic" class="form-control" readonly/>
-      </div>    
- </div> 
- <div class="row">
   <div class="col-sm-12">
     <label>ท่าเรือ</label>
     <input type="text" id="lblTerminal" class="form-control" readonly/>
   </div>    
 </div> 
 <div class="row">
-  <div class="col-sm-12">
-    <label>ทะเบียนรถ</label>
-    <input type="text" id="lblLicense" class="form-control" readonly/>
-  </div>    
-</div> 
+      <div class="col-sm-12">
+        <label>กิจกรรม</label>
+        <input type="text" id="lblTopic" class="form-control" readonly/>
+      </div>    
+ </div> 
 <div class="row">
   <div class="col-sm-12">
     <label>วันที่</label>
@@ -161,12 +147,18 @@
   </div>    
 </div> 
 <div class="row">
-  <div class="col-sm-12">
-    <label>เบอร์ติดต่อ</label>
-    <input type="text" id="lblTel" class="form-control" readonly/>
-  </div>    
-</div> 
+    <div class="col-sm-12">
+      <label>ทะเบียนรถ</label>
+      <input type="text" id="txtLicense" class="form-control"/>
+    </div>
+  </div> 
 <br/>
+<div class="row">
+    <div class="col-sm-12">
+      <label>เบอร์ติดต่อ</label>
+      <input type="text" id="txtTelNo" class="form-control" maxlength="10"/>
+    </div>
+  </div> 
 <div class="row">
   <div class="col-sm-12">
     <button id="btnMsg" onclick="step3()" class="btn btn-primary">ยืนยัน</button>
@@ -184,10 +176,10 @@
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     $(document).ready(function () {
-jQuery.extend(jQuery.mobile.datebox.prototype.options, {
-    'dateFormat': 'dd/MM/YYYY',
-    'headerFormat': 'dd/MM/YYYY',
-});
+    jQuery.extend(jQuery.mobile.datebox.prototype.options, {
+        'dateFormat': 'dd/MM/YYYY',
+        'headerFormat': 'dd/MM/YYYY',
+    });
         $("#txtDate").click(function (event) {
             $(".ui-icon-calendar").trigger("click");
         });
@@ -198,13 +190,19 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
         var txtDate='';
         var txtTelNo='';
     function step1() {
-         
+       var status=validData();
+       console.log(status);
+         if(status!=''){
+
+         notie.alert({ type: 3, text: status, time: 2 })
+          return;
+         }
         var ddlToPic=$("#ddlToPic").val();
         var ddlTerminal=$("#ddlTerminal").val();
-        var txtLicense=$("#txtLicense").val();
+         
         var txtDate=$("#txtDate").val();
-        var txtTelNo=$("#txtTelNo").val();
-        console.log(ddlToPic+","+ddlTerminal+","+txtLicense+","+txtDate+","+txtTelNo);
+ 
+        console.log(ddlToPic+","+ddlTerminal+","+txtDate);
         $("#step1").hide();
         $("#step2").show();
         loadData();
@@ -237,8 +235,6 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
     function backStep2(){
       $("#step3").hide();
       $("#step2").show();
-       
-
     }
     function step2() {
      
@@ -268,6 +264,13 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
 
     }
     function step3() {
+       var status=validData2();
+       console.log(status);
+         if(status!=''){
+
+         notie.alert({ type: 3, text: status, time: 2 })
+          return;
+         }
       var ddlToPic=$("#ddlToPic").val();
         var ddlTerminal=$("#ddlTerminal").val();
         var txtLicense=$("#txtLicense").val();
@@ -279,6 +282,53 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
  
 
    }
+   function validData(){
+        var status='';
+         
+    if($("#ddlToPic").val()=='--'){
+      status+=',กิจกรรม ';
+      
+    }
+    if($("#ddlTerminal").val()=='--'){
+      status+=',ท่าเรือ ' ;
+       
+    }
+    if($("#txtDate").val()==''){
+      status+= ',วันที่ ';
+       
+    }
+    if(status!=''){
+        
+      status='กรุณาเลือก '+status.substring(1,status.length-1);
+      return status;
+    }else{
+    return '';}
+   }
+   function validData2(){
+        var status='';
+         
+    if($("#txtTelNo").val()==''){
+      status+=',เบอร์โทร ';
+      
+    }
+    if($("#txtLicense").val()==''){
+      status+=',ป้ายทะเบียน ' ;
+       
+    }
+    
+    if(status!=''){
+        
+      status='กรุณาเลือก '+status.substring(1,status.length-1);
+      return status;
+    }else{
+    return '';}
+   }
+   notie.setOptions({
+        alertTime: 5
+      })
+   function error () {
+        notie.alert({ type: 3, text: 'Error.', time: 2 })
+      }
     function createUniversalLink() {
     }
 
@@ -301,6 +351,19 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
     }
 
     async function sendMsg() {
+      // ต.ย ข้อความแบบ text จำนวน 2 bubbles
+      if(liff.getContext().type!=="none"){
+await liff.sendMessage([
+  {
+    "type": "text",
+    "text": "Hello World!"
+  }
+])
+
+        
+      }
+  
+ 
     }
 
     function getContext() {
@@ -348,6 +411,6 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options, {
         liff.login();
       }
     }, err => console.error(err.code, error.message));
-  // </script>
+  </script>
 </body>
 </html>
