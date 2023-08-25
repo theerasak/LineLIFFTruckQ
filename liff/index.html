@@ -355,12 +355,10 @@
     async function sendMsg() {
       // ต.ย ข้อความแบบ text จำนวน 2 bubbles
       if(liff.getContext().type!=="none"){
-          await liff.sendMsg([
-            {
-              "type": "text",
-              "text": "Hello World!"
-            }
-          ])
+          await liff.sendMessages([{
+type: 'text',
+text: '[TEST]TEST'
+}])
       alert('sent');
         
       }
