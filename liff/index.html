@@ -90,7 +90,6 @@
     <div class="col-sm-12">
       <br/>
       <button id="btnMsg" onclick="step1()" class="btn btn-primary">ถัดไป</button>
-       <button id="btnMsg3" onclick="sendMsg()" class="btn btn-primary">test</button>
     </div>
   </div> 
 </div>
@@ -273,14 +272,22 @@
          notie.alert({ type: 3, text: status, time: 2 })
           return;
          }
-      var ddlToPic=$("#ddlToPic").val();
-        var ddlTerminal=$("#ddlTerminal").val();
-        var txtLicense=$("#txtLicense").val();
-        var txtDate=$("#txtDate").val();
-        var txtTelNo=$("#txtTelNo").val();
+         notie.confirm({
+          text: 'ยืนยันการบันทักข้อมูล?<br>',
+          cancelCallback: function () {
+            //notie.alert({ type: 3, text: 'Aw, why not? :(', time: 2 })
+          },
+          submitCallback: function () {
+        
      
-     
-     alert('result'+ddlToPic+","+ddlTerminal+","+txtLicense+","+txtDate+","+txtTelNo);
+        var msg='จองคิว\n1.'+$("#ddlTerminal").val()+'\n2.'+$("#ddlToPic").val()+'\n3.'+$("#txtDate").val()+'\n4.'+$("#lblTime").val()+'\n5.'+$("#txtLicense").val()+'\n6.'+$("#txtTelNo").val();
+        console.log(msg);
+        sendMsg(msg);
+        
+          }
+        })
+       
+     //alert('result'+ddlToPic+","+ddlTerminal+","+txtLicense+","+txtDate+","+txtTelNo);
  
 
    }
@@ -333,7 +340,17 @@
       }
     function createUniversalLink() {
     }
-
+function confirm () {
+        notie.confirm({
+          text: 'Are you sure you want to do that?<br><b>That\'s a bold move...</b>',
+          cancelCallback: function () {
+            notie.alert({ type: 3, text: 'Aw, why not? :(', time: 2 })
+          },
+          submitCallback: function () {
+            notie.alert({ type: 1, text: 'Good choice! :D', time: 2 })
+          }
+        })
+      }
     async function shareMsg() {
     }
 
@@ -352,24 +369,33 @@
     async function getFriendship() {
     }
 
-    async function sendMsg() {
+    async function sendMsg(msg) {
       if (!liff.isInClient()) {
     window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-} else {
-    liff.sendMessages([
-        {
-            type: 'text',
-            text: 'Hello, World!',
-        },
-    ])
-        .then(() => {
-            window.alert('Message sent');
-        })
-        .catch((error) => {
-            window.alert('Error sending message: ' + error);
-        });
-}
-  
+      } else {
+          liff.sendMessages([
+              {
+                  type: 'text',
+                  text: msg,
+              },
+          ])
+              .then(() => {
+                  window.alert('Message sent');
+              })
+              .catch((error) => {
+                  window.alert('Error sending message: ' + error);
+              });
+      }
+      // closeWindow call
+      if (!liff.isInClient()) {
+          window.alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+      } else {
+        notie.alert({ type: 1, text: 'บันทีกสำเร็จ! :D', time: 2 });
+        setTimeout(() => {
+  liff.closeWindow();
+}, 1000);
+          
+      }
  
     }
 
