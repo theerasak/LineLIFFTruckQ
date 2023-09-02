@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>LCB1 Truck Q</title>
   <link rel="stylesheet" href="css/style.css" media="all">
-  <link rel="stylesheet" type="text/css" href="css/notie.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.css">
  
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-  <link href="css/jquery.mobile-1.4.4.min.css" rel="stylesheet" />
-  <link href="css/jqm-datebox-1.4.4.min.css" rel="stylesheet" />
+  <link href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" rel="stylesheet" />
+  <link href="https://cdn.jtsage.com/datebox/1.4.4/jqm-datebox-1.4.4.min.css" rel="stylesheet" />
 <!-- NOTE: Script load order is significant! -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/jquery.mobile-1.4.4.min.js"></script>
-<script src="js/jqm-datebox-1.4.4.core.min.js"></script>
-<script src="js/jqm-datebox-1.4.4.mode.flipbox.min.js"></script>
-<script src="js/notie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script src="https://cdn.jtsage.com/datebox/1.4.4/jqm-datebox-1.4.4.core.min.js"></script>
+<script src="https://cdn.jtsage.com/datebox/1.4.4/jqm-datebox-1.4.4.mode.flipbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notie/4.3.1/notie.js"></script>
 </head>
 <body>
   <!-- <p id="os"><b>OS:</b> </p>
@@ -58,18 +58,6 @@
   <h3 class="form-control" style="background-color: blueviolet;color: #fff;">ข้อมูลการของคิว</h3>
   <div class="row">
     <div class="col-sm-12">
-      <label>กิจกรรม</label>
-      <select id="ddlToPic" class="form-control">
-      <option selected="" value="--">--</option>
-       
-      <option value="ส่งตู้(หนัก)">ส่งตู้(หนัก)</option>
-      <option value="รับตู้(เปล่า)">รับตู้(เปล่า)</option>
-       
-    </select>
-    </div>
-  </div> 
-  <div class="row">
-    <div class="col-sm-12">
       <label>ท่าเรือ</label>
       <select id="ddlTerminal" class="form-control">
         <option selected="" value="--">--</option>
@@ -77,8 +65,19 @@
         <option value="B1">B1</option>
     </select>
     </div>
+  </div>   
+  <div class="row">
+    <div class="col-sm-12">
+      <label>กิจกรรม</label>
+      <select id="ddlToPic" class="form-control">
+      <option selected="" value="--">--</option>
+       
+      <option value="ส่งตู้(หนัก)">ส่งตู้(หนัก)</option>
+      <option value="รับตู้(เปล่า)">รับตู้(หนัก)</option>
+       
+    </select>
+    </div>
   </div> 
-  
   <div class="row">
     <div class="col-sm-12">
       <label>วันที่จอง</label>
